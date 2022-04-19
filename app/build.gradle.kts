@@ -4,14 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = appConfig.compileSdkVersion
+    buildToolsVersion = appConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = "kg.ruslan.photosapp"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = appConfig.applicationId
+        minSdk = appConfig.minSdkVersion
+        targetSdk = appConfig.targetSdkVersion
+        versionCode = appConfig.versionCode
+        versionName = appConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,15 +45,14 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    //koin
+    addKoin()
+
+    //navigation
+    implementation(deps.jetpackNavigation.uiNavigation)
+    implementation(deps.jetpackNavigation.fragmentNavigation)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
 }
