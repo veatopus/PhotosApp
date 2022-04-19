@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Widget.AppCompat.ProgressBar.ProgressBarWhite" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:foregroundTint">@color/white</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_color</item>
+        <item name="android:indeterminateTint">@color/white</item>
+        <item name="android:indeterminateTintMode">src_atop</item>
+        <item name="android:progressDrawable">@drawable/progress_color</item>
+    </style>
+
+    <style name="CustomDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

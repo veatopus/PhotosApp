@@ -88,10 +88,7 @@ inline val PDsS.kotlin: PDS get() = id("kotlin")
 inline val PDsS.googleServices: PDS get() = id("com.google.gms.google-services")
 inline val PDsS.firebaseCrashlitics:PDS get() = id("com.google.firebase.crashlytics")
 
-inline val DependencyHandler.domain get() = project(":domain")
-inline val DependencyHandler.data get() = project(":data")
-inline val DependencyHandler.featureProductInfo get() = project(":feature-product_info")
-inline val DependencyHandler.featurePostAnAd get() = project(":feature-post_an_ad")
+inline val DependencyHandler.core get() = project(":core")
 
 
 fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {
