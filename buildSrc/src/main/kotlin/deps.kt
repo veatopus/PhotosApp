@@ -8,6 +8,7 @@ import org.gradle.plugin.use.PluginDependencySpec
 
 object appConfig {
 
+    const val jvmVersion = "1.8"
     const val compileSdkVersion = 32
     const val buildToolsVersion = "31.0.0"
 
@@ -78,6 +79,7 @@ object deps {
 private typealias PDsS = PluginDependenciesSpec
 private typealias PDS = PluginDependencySpec
 
+//plugins
 inline val PDsS.androidApplication: PDS get() = id("com.android.application")
 inline val PDsS.kotlinAndroid: PDS get() = id("kotlin-android")
 inline val PDsS.kotlinKapt: PDS get() = id("kotlin-kapt")
@@ -87,15 +89,26 @@ inline val PDsS.kotlin: PDS get() = id("kotlin")
 inline val PDsS.googleServices: PDS get() = id("com.google.gms.google-services")
 inline val PDsS.firebaseCrashlitics:PDS get() = id("com.google.firebase.crashlytics")
 
+//modules
 inline val DependencyHandler.core get() = project(":core")
+inline val DependencyHandler.domain get() = project(":domain")
+inline val DependencyHandler.data get() = project(":data")
 
-
+//extansions
 fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {
     val configName = "implementation"
 
     add(configName, deps.koin.core)
     add(configName, deps.koin.android)
     if (wihtinTest) add(configName, deps.koin.testJunit4)
+}
+
+fun DependencyHandler.addCoroutines() {
+    val configName = "implementation"
+
+    add(configName, deps.coroutines.core)
+    add(configName, deps.coroutines.android)
+    add(configName, deps.coroutines.coroutinePlayServices)
 }
 
 fun ExternalModuleDependency.exclude(group: String, module: String) {
