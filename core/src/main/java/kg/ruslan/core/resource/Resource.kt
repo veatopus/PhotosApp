@@ -23,5 +23,5 @@ sealed class Resource<out T>(
     /**
      * [Error] result got wrong. Error is state with message te notify receiver that something went wrong
      */
-    class Error<T>(message: String, data: T? = null) : Resource<T>(data = data, message = message)
+    class Error<T>(message: String, data: T? = null, error: Throwable? = null) : Resource<T>(data = data, message = message)
 }

@@ -5,5 +5,5 @@ import kg.ruslan.core.apis.models.Photo
 import kg.ruslan.core.resource.Resource
 
 interface LocalPhotosApi {
-    fun getLocalPhotos(): LiveData<Resource<Photo>>
+    fun getLocalPhotos(): LiveData<Resource<List<Photo>>>
 }
