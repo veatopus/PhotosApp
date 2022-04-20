@@ -57,4 +57,8 @@ dependencies {
     implementation(deps.jetpackNavigation.uiNavigation)
     implementation(deps.jetpackNavigation.fragmentNavigation)
 
+    //modules
+    implementation(core)
+    implementation(domain)
+    implementation(data)
 }
