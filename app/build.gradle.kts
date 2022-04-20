@@ -48,19 +48,17 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    //modules
-    implementation(core)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
     //koin
     addKoin()
 
     //navigation
     implementation(deps.jetpackNavigation.uiNavigation)
     implementation(deps.jetpackNavigation.fragmentNavigation)
+    implementation(deps.jetpackNavigation.moduleSupport)
 
     //modules
     implementation(core)
     implementation(domain)
     implementation(data)
+    implementation(featureGreeting)
 }

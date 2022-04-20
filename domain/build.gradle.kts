@@ -46,4 +46,9 @@ dependencies {
 
     //koin
     addKoin()
+
+    //navigation
+    implementation(deps.jetpackNavigation.uiNavigation)
+    implementation(deps.jetpackNavigation.fragmentNavigation)
+    implementation(deps.jetpackNavigation.moduleSupport)
 }

@@ -46,4 +46,10 @@ dependencies {
 
     //koin
     addKoin()
+
+    //lifecycle
+    implementation(deps.lifecycle.runtimeKtx)
+
+    //for loading photos
+    implementation(deps.glide)
 }

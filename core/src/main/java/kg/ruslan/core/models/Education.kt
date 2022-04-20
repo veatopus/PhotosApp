@@ -1,4 +1,4 @@
-package kg.ruslan.core.apis.models
+package kg.ruslan.core.models
 
 import java.lang.RuntimeException
 
@@ -31,4 +31,11 @@ fun Education.fromInt(value: Int): Education {
         4 -> Education.DOCTORAL
         else -> throw RuntimeException("Unidentified int value. Value must be from 1..4")
     }
+}
+
+fun Education.toNormalString(): String = when(this) {
+    Education.HIGH_SCHOOL -> "High School"
+    Education.BACHELOR -> "Bachelor"
+    Education.MASTER -> "Master"
+    Education.DOCTORAL -> "Doctoral"
 }

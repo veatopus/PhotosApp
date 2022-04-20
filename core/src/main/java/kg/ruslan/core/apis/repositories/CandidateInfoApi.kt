@@ -1,9 +1,9 @@
 package kg.ruslan.core.apis.repositories
 
-import androidx.lifecycle.LiveData
-import kg.ruslan.core.apis.models.Candidate
+import kg.ruslan.core.models.Candidate
 import kg.ruslan.core.resource.Resource
+import kotlinx.coroutines.flow.Flow
 
 interface CandidateInfoApi {
-    fun getCandidate(): LiveData<Resource<Candidate>>
+    fun getCandidate(): Flow<Resource<Candidate>>
 }

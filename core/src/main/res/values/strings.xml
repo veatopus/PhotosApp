@@ -1,1 +1,10 @@
-<resources></resources>
+<resources>
+    <string name="greeting">Hi there 👋</string>
+    <string name="my_education">My education:</string>
+    <string name="my_name_is">My name is</string>
+    <string name="experience_at_companies">About my experience and company which i worked at:</string>
+    <string name="experience">Experience 💼</string>
+    <string name="userAvatar">User Avatar</string>
+    <string name="at_company">* At company:</string>
+    <string name="on_position">- On position:</string>
+</resources>

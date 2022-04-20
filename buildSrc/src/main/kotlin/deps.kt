@@ -34,7 +34,6 @@ object deps {
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.2.1"
-        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
         const val material = "com.google.android.material:material:1.5.0"
     }
 
@@ -54,10 +53,11 @@ object deps {
     }
 
     object jetpackNavigation {
-        private const val version = "2.4.1"
+        private const val version = "2.4.2"
 
         const val fragmentNavigation = "androidx.navigation:navigation-fragment-ktx:$version"
         const val uiNavigation = "androidx.navigation:navigation-ui-ktx:$version"
+        const val moduleSupport = "androidx.navigation:navigation-dynamic-features-fragment:$version"
     }
 
     object koin {
@@ -94,6 +94,7 @@ inline val PDsS.firebaseCrashlitics:PDS get() = id("com.google.firebase.crashlyt
 inline val DependencyHandler.core get() = project(":core")
 inline val DependencyHandler.domain get() = project(":domain")
 inline val DependencyHandler.data get() = project(":data")
+inline val DependencyHandler.featureGreeting get() = project(":feature-greeting")
 
 //extansions
 fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {

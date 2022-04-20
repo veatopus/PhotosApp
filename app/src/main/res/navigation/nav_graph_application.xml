@@ -10,4 +10,6 @@
         android:name="kg.ruslan.photosapp.ui.FragmentToGo"
         android:label="fragment_to_go"
         tools:layout="@layout/fragment_to_go" />
+
+    <include app:graph="@navigation/nav_graph_greetin" />
 </navigation>

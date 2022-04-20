@@ -20,11 +20,11 @@ class FragmentToGo : BaseFragment<FragmentToGoBinding>(FragmentToGoBinding::infl
     }
 
     private fun openGreetingScreen() {
-        TODO("Not yet implemented")
+
     }
 
     private fun openHomeScreen() {
-        TODO("Not yet implemented")
+        //TO/DO("Not yet implemented")
     }
 
 }

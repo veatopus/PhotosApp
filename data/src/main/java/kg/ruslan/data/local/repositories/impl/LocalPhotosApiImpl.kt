@@ -6,7 +6,7 @@ import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.lifecycle.LiveData
-import kg.ruslan.core.apis.models.Photo
+import kg.ruslan.core.models.Photo
 import kg.ruslan.core.apis.repositories.LocalPhotosApi
 import kg.ruslan.core.base.BaseRepository
 import kg.ruslan.core.resource.Resource

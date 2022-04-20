@@ -5,7 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
@@ -27,4 +34,24 @@ open class BaseFragment<Binding : ViewBinding>(
     }
 
     protected open fun initialize() {  }
+
+    @OptIn(InternalCoroutinesApi::class)
+    protected inline fun<T, State> StateFlow<State>.partialListener(crossinline block: (T) -> Unit, crossinline transform: suspend (value: State) -> T) {
+        lifecycleScope.launch {
+            map(transform)
+                .distinctUntilChanged()
+                .collect {
+                    block(it)
+                }
+        }
+    }
+
+    @OptIn(InternalCoroutinesApi::class)
+    protected suspend fun<T, State> partialListener(state: StateFlow<State>, variable: T, block: (T) -> Unit) {
+        state.map { variable }
+            .distinctUntilChanged()
+            .collect {
+                block(it)
+            }
+    }
 }
