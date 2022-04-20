@@ -1,4 +1,4 @@
-package kg.ruslan.domain.models
+package kg.ruslan.core.apis.models
 
 data class Company(
     val name: String,
