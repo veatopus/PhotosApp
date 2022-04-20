@@ -8,6 +8,7 @@ import org.gradle.plugin.use.PluginDependencySpec
 
 object appConfig {
 
+    const val jvmVersion = "1.8"
     const val compileSdkVersion = 32
     const val buildToolsVersion = "31.0.0"
 
@@ -96,6 +97,14 @@ fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {
     add(configName, deps.koin.core)
     add(configName, deps.koin.android)
     if (wihtinTest) add(configName, deps.koin.testJunit4)
+}
+
+fun DependencyHandler.addCoroutines() {
+    val configName = "implementation"
+
+    add(configName, deps.coroutines.core)
+    add(configName, deps.coroutines.android)
+    add(configName, deps.coroutines.coroutinePlayServices)
 }
 
 fun ExternalModuleDependency.exclude(group: String, module: String) {
