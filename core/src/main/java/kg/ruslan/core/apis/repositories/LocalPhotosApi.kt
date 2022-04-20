@@ -1,9 +1,9 @@
 package kg.ruslan.core.apis.repositories
 
+import androidx.lifecycle.LiveData
 import kg.ruslan.core.apis.models.Photo
 import kg.ruslan.core.resource.Resource
-import kotlinx.coroutines.flow.Flow
 
 interface LocalPhotosApi {
-    fun getLocalPhotos(): Flow<Resource<Photo>>
+    fun getLocalPhotos(): LiveData<Resource<Photo>>
 }
