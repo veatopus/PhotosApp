@@ -16,3 +16,4 @@ rootProject.name = "PhotosApp"
 include(":app")
 include(":core")
 include(":data")
+include(":domain")
