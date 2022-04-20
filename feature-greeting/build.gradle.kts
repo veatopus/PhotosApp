@@ -1,17 +1,14 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    androidApplication
+    kotlinAndroid
 }
 
 android {
-    compileSdk = 32
+    compileSdk = appConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId = "kg.ruslan.feature_greeting"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = appConfig.minSdkVersion
+        targetSdk = appConfig.targetSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,16 +27,22 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = appConfig.jvmVersion
     }
 }
 
 dependencies {
+    //base
+    implementation(deps.androidx.coreKtx)
+    implementation(deps.androidx.appCompat)
+    implementation(deps.androidx.material)
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    //modules
+    implementation(core)
+
+    //coroutines
+    implementation(deps.coroutines.core)
+
+    //koin
+    addKoin()
 }
