@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    androidLibrary
+    kotlinAndroid
 }
 
 android {
@@ -36,12 +36,8 @@ android {
 }
 
 dependencies {
-
     implementation(deps.androidx.constraintLayout)
     implementation(deps.androidx.coreKtx)
     implementation(deps.androidx.appCompat)
     implementation(deps.androidx.material)
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
 }
