@@ -43,4 +43,7 @@ dependencies {
 
     //coroutines
     addCoroutines()
+
+    //koin
+    addKoin()
 }

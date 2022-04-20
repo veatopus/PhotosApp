@@ -46,4 +46,7 @@ dependencies {
 
     //gson
     implementation(deps.gson)
+
+    //koin
+    addKoin()
 }
