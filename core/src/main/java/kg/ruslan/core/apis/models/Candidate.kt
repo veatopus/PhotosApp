@@ -1,4 +1,4 @@
-package kg.ruslan.domain.models
+package kg.ruslan.core.apis.models
 
 data class Candidate(
     val name: String,

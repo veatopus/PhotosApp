@@ -1,6 +1,6 @@
 package kg.ruslan.domain.use_cases
 
-import kg.ruslan.domain.repositories.LocalPhotosApi
+import kg.ruslan.core.apis.repositories.LocalPhotosApi
 
 class GetLocalPhotosUseCase(
     private val api: LocalPhotosApi

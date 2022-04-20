@@ -40,4 +40,10 @@ dependencies {
 
     //coroutines
     addCoroutines()
+
+    //modules
+    implementation(core)
+
+    //gson
+    implementation(deps.gson)
 }

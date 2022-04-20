@@ -68,6 +68,7 @@ object deps {
         const val testJunit4 = "io.insert-koin:koin-test-junit4:$version"
     }
 
+    const val gson = "com.google.code.gson:gson:2.8.6"
     const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
     const val flowExt = "io.github.hoc081098:FlowExt:0.1.0"

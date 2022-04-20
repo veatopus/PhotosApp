@@ -1,7 +1,7 @@
-package kg.ruslan.domain.repositories
+package kg.ruslan.core.apis.repositories
 
+import kg.ruslan.core.apis.models.Photo
 import kg.ruslan.core.resource.Resource
-import kg.ruslan.domain.models.Photo
 import kotlinx.coroutines.flow.Flow
 
 interface LocalPhotosApi {

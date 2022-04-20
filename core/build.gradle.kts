@@ -40,4 +40,7 @@ dependencies {
     implementation(deps.androidx.coreKtx)
     implementation(deps.androidx.appCompat)
     implementation(deps.androidx.material)
+
+    //coroutines
+    addCoroutines()
 }
