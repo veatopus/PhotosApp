@@ -1,4 +1,5 @@
 plugins {
+    id("org.jetbrains.kotlin.android")
     androidApplication
     kotlinAndroid
 }
@@ -49,6 +50,7 @@ dependencies {
 
     //modules
     implementation(core)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     //koin
     addKoin()
