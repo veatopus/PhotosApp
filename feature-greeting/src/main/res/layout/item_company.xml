@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/naming_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="fl_company, fl_position" />
+
+
+    <TextView
+        android:id="@+id/fl_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/at_company"
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical"
+        android:text="TEST_COMPANY"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/fl_company"
+        app:layout_constraintStart_toEndOf="@id/naming_barrier"
+        app:layout_constraintTop_toTopOf="@id/fl_company" />
+
+    <TextView
+        android:id="@+id/fl_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/on_position"
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_company" />
+
+    <TextView
+        android:id="@+id/tv_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:gravity="center_vertical"
+        android:text="android developer"
+        app:layout_constraintBottom_toBottomOf="@id/fl_position"
+        app:layout_constraintStart_toEndOf="@id/naming_barrier"
+        app:layout_constraintTop_toTopOf="@id/fl_position" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

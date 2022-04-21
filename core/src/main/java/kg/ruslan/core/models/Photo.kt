@@ -1,4 +1,4 @@
-package kg.ruslan.core.apis.models
+package kg.ruslan.core.models
 
 import android.net.Uri
 

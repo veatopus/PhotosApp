@@ -28,7 +28,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = appConfig.jvmVersion
     }
     buildFeatures {
         viewBinding = true
@@ -46,4 +46,10 @@ dependencies {
 
     //koin
     addKoin()
+
+    //lifecycle
+    implementation(deps.lifecycle.runtimeKtx)
+
+    //for loading photos
+    implementation(deps.glide)
 }

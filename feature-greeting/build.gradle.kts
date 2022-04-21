@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = appConfig.jvmVersion
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,15 +43,25 @@ dependencies {
 
     //modules
     implementation(core)
+    implementation(domain)
 
     //coroutines
-    implementation(deps.coroutines.core)
+    addCoroutines()
 
     //koin
     addKoin()
+
+    //recycler view
+    implementation(deps.androidx.recyclerView)
+
+    //viewModel
+    implementation(deps.lifecycle.viewModelKtx)
 
     //navigation
     implementation(deps.jetpackNavigation.uiNavigation)
     implementation(deps.jetpackNavigation.fragmentNavigation)
     implementation(deps.jetpackNavigation.moduleSupport)
+
+    //logger
+    implementation(deps.timber)
 }
