@@ -1,5 +1,5 @@
 plugins {
-    androidApplication
+    androidLibrary
     kotlinAndroid
 }
 
@@ -11,6 +11,7 @@ android {
         targetSdk = appConfig.targetSdkVersion
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -29,7 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = appConfig.jvmVersion
     }
-
     buildFeatures {
         viewBinding = true
     }
@@ -62,4 +62,6 @@ dependencies {
     implementation(deps.jetpackNavigation.fragmentNavigation)
     implementation(deps.jetpackNavigation.moduleSupport)
 
+    //logger
+    implementation(deps.timber)
 }

@@ -23,7 +23,7 @@ enum class Education {
  *
  * @throws RuntimeException when incoming int value is not from expected rage [1..4]
  */
-fun Education.fromInt(value: Int): Education {
+fun educationFromInt(value: Int): Education {
     return when(value) {
         1 -> Education.HIGH_SCHOOL
         2 -> Education.BACHELOR

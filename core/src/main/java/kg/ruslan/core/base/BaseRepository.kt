@@ -2,7 +2,12 @@ package kg.ruslan.core.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kg.ruslan.core.resource.Resource
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.flow
+import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
 
 open class BaseRepository {
@@ -36,6 +41,15 @@ open class BaseRepository {
     protected fun<T> MutableLiveData<T>.asyncEmit(value: T) {
         GlobalScope.launch(customCoroutineContext) {
             postValue(value)
+        }
+    }
+
+    protected fun<T> doRequest(block: suspend FlowCollector<Resource<T>>.() -> Unit) = flow {
+        emit(Resource.Loading())
+        try {
+            block()
+        } catch (e: Exception) {
+            emit(Resource.Error(error = e, message = e.localizedMessage ?: "null"))
         }
     }
 }

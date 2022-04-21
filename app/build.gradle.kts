@@ -61,4 +61,7 @@ dependencies {
     implementation(domain)
     implementation(data)
     implementation(featureGreeting)
+
+    //logger
+    implementation(deps.timber)
 }

@@ -36,7 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Ruslan"
             android:theme="@style/SecondaryTextView"
             app:layout_constraintStart_toEndOf="@id/fl_user_name"
             app:layout_constraintTop_toTopOf="@id/fl_user_name" />
@@ -46,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Supataev!"
             android:theme="@style/SecondaryTextView"
             app:layout_constraintStart_toEndOf="@id/tv_user_name"
             app:layout_constraintTop_toTopOf="@id/fl_user_name" />
@@ -57,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="I think you don't mind that i change json file a bit. Anyway, a little bit about me.\nI'm in the commercial android development about 2 years.\nI've got experience at teaching people, solving tasks. Also i spend a lot of time for supporting old project and rewriting big project in a small team.\nI've been lead developer for my last commercial project.\nFor resolve one of companies' task i've learned swift and ios development for around one week and reach high results."
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fl_user_name" />
@@ -85,7 +82,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="High School"
             android:theme="@style/SecondaryTextView"
             app:layout_constraintStart_toEndOf="@id/fl_education"
             app:layout_constraintTop_toTopOf="@id/fl_education" />
