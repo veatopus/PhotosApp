@@ -1,6 +1,5 @@
 package kg.ruslan.photosapp.ui
 
-import android.util.Log
 import androidx.navigation.fragment.findNavController
 import kg.ruslan.core.base.BaseFragment
 import kg.ruslan.core.sharedpreference.GreetingFragmentOpened
@@ -23,7 +22,6 @@ class FragmentToGo : BaseFragment<FragmentToGoBinding>(FragmentToGoBinding::infl
     }
 
     private fun openGreetingScreen() {
-        Log.e("ololo", "openGreetingScreen: ")
         findNavController().navigate(R.id.action_fragmentToGo_to_greeting)
     }
 
