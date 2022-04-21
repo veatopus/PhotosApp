@@ -11,42 +11,37 @@ import kg.ruslan.core.apis.repositories.LocalPhotosApi
 import kg.ruslan.core.base.BaseRepository
 import kg.ruslan.core.resource.Resource
 import kg.ruslan.data.errors.StoragePermissionsNotReceived
+import kotlinx.coroutines.flow.Flow
 
 class LocalPhotosApiImpl(
     private val context: Context
-): BaseRepository(), LocalPhotosApi {
+) : BaseRepository(), LocalPhotosApi {
 
     @SuppressLint("Recycle")
-    override fun getLocalPhotos(): LiveData<Resource<List<Photo>>> = liveData {
-        asyncEmit(Resource.Loading())
-        try {
-            val data = mutableListOf<Photo>()
-            context.contentResolver.query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null,
-                null,
-                null,
-                null
-            )?.use {  cursor ->
+    override fun getLocalPhotos(): Flow<Resource<List<Photo>>> = doRequest {
+        val data = mutableListOf<Photo>()
+        context.contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )?.use { cursor ->
+            // Cache column indices.
+            val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
 
-                // Cache column indices.
-                val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
+            while (cursor.moveToNext()) {
+                val id = cursor.getLong(idColumn)
 
-                while (cursor.moveToNext()) {
-                    val id = cursor.getLong(idColumn)
-
-                    val contentUri: Uri = ContentUris.withAppendedId(
-                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                        id
-                    )
-                    data.add(Photo(uri = contentUri))
-                }
-                asyncEmit(Resource.Success(data = data))
+                val contentUri: Uri = ContentUris.withAppendedId(
+                    MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                    id
+                )
+                data.add(Photo(uri = contentUri))
             }
-        } catch (e: Exception) {
-            val error = StoragePermissionsNotReceived()
-            asyncEmit(Resource.Error(error = error, message = error.getMessageTask()))
+            emit(Resource.Success(data = data))
         }
+
 
     }
 }
