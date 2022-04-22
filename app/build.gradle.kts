@@ -1,6 +1,7 @@
 plugins {
-    id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    androidApplication
+    kotlinAndroid
 }
 
 android {
@@ -47,16 +48,21 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    //modules
-    implementation(core)
-
     //koin
     addKoin()
 
     //navigation
     implementation(deps.jetpackNavigation.uiNavigation)
     implementation(deps.jetpackNavigation.fragmentNavigation)
+    implementation(deps.jetpackNavigation.moduleSupport)
 
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    //modules
+    implementation(core)
+    implementation(domain)
+    implementation(data)
+    implementation(featureGreeting)
+    implementation(featurePhotos)
 
+    //logger
+    implementation(deps.timber)
 }

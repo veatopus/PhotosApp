@@ -2,18 +2,15 @@
 
 import org.gradle.api.artifacts.ExternalModuleDependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
-import org.gradle.kotlin.dsl.accessors.runtime.addExternalModuleDependencyTo
 import org.gradle.kotlin.dsl.project
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
 object appConfig {
 
+    const val jvmVersion = "1.8"
     const val compileSdkVersion = 32
     const val buildToolsVersion = "31.0.0"
-
-    const val gradleVersion = "4.4"
-
 
     const val applicationId = "kg.ruslan.photosapp"
 
@@ -29,12 +26,10 @@ object appConfig {
 
 object deps {
     object androidx {
-        const val activity = "androidx.activity:activity:1.4.0@aar"
         const val appCompat = "androidx.appcompat:appcompat:1.3.1"
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.2.1"
-        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
         const val material = "com.google.android.material:material:1.5.0"
     }
 
@@ -43,7 +38,6 @@ object deps {
 
         const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
         const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-        const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:$version"
     }
 
     object coroutines {
@@ -54,10 +48,11 @@ object deps {
     }
 
     object jetpackNavigation {
-        private const val version = "2.4.1"
+        private const val version = "2.4.2"
 
         const val fragmentNavigation = "androidx.navigation:navigation-fragment-ktx:$version"
         const val uiNavigation = "androidx.navigation:navigation-ui-ktx:$version"
+        const val moduleSupport = "androidx.navigation:navigation-dynamic-features-fragment:$version"
     }
 
     object koin {
@@ -68,17 +63,17 @@ object deps {
         const val testJunit4 = "io.insert-koin:koin-test-junit4:$version"
     }
 
-    const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
+    const val gson = "com.google.code.gson:gson:2.8.6"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
     const val flowExt = "io.github.hoc081098:FlowExt:0.1.0"
     const val glide = "com.github.bumptech.glide:glide:4.12.0"
     const val timber = "com.jakewharton.timber:timber:5.0.1"
-    const val stfalconImageViewer = "com.github.stfalcon-studio:StfalconImageViewer:v1.0.1"
 }
 
 private typealias PDsS = PluginDependenciesSpec
 private typealias PDS = PluginDependencySpec
 
+//plugins
 inline val PDsS.androidApplication: PDS get() = id("com.android.application")
 inline val PDsS.kotlinAndroid: PDS get() = id("kotlin-android")
 inline val PDsS.kotlinKapt: PDS get() = id("kotlin-kapt")
@@ -88,15 +83,28 @@ inline val PDsS.kotlin: PDS get() = id("kotlin")
 inline val PDsS.googleServices: PDS get() = id("com.google.gms.google-services")
 inline val PDsS.firebaseCrashlitics:PDS get() = id("com.google.firebase.crashlytics")
 
+//modules
 inline val DependencyHandler.core get() = project(":core")
+inline val DependencyHandler.domain get() = project(":domain")
+inline val DependencyHandler.data get() = project(":data")
+inline val DependencyHandler.featureGreeting get() = project(":feature-greeting")
+inline val DependencyHandler.featurePhotos get() = project(":feature-photos")
 
-
+//extansions
 fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {
     val configName = "implementation"
 
     add(configName, deps.koin.core)
     add(configName, deps.koin.android)
     if (wihtinTest) add(configName, deps.koin.testJunit4)
+}
+
+fun DependencyHandler.addCoroutines() {
+    val configName = "implementation"
+
+    add(configName, deps.coroutines.core)
+    add(configName, deps.coroutines.android)
+    add(configName, deps.coroutines.coroutinePlayServices)
 }
 
 fun ExternalModuleDependency.exclude(group: String, module: String) {

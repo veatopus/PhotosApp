@@ -1,0 +1,19 @@
+{
+  "user": {
+    "first_name": "Ruslan",
+    "photo": "https://multianime.com.mx/wp-content/uploads/2020/08/anime-404-gomen-.jpg",
+    "second_name": "Supataev",
+    "education": 1,
+    "description": "I think you don't mind that i change json file a bit. Well, a little bit about me.\n\nI'm in the commercial android development about 2 years.\nI've got experience at teaching people, solving tasks. Also i spend a lot of time for supporting old project and rewriting big project in a small team.\nI've been lead developer for my last commercial project.\nFor resolve one of companies' task i've learned swift and ios development for around one week and reach high results.",
+    "company": [
+      {
+        "name": "Facebook",
+        "position": "senior ios software engineer"
+      },
+      {
+        "name": "Google",
+        "position": "senior android software engineer"
+      }
+    ]
+  }
+}

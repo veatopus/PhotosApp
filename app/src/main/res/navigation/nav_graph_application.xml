@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/fragmentToGo">
 
+    <fragment
+        android:id="@+id/fragmentToGo"
+        android:name="kg.ruslan.photosapp.ui.FragmentToGo"
+        android:label="fragment_to_go"
+        tools:layout="@layout/fragment_to_go">
 
+        <action
+            android:id="@+id/action_fragmentToGo_to_greeting"
+            app:destination="@id/nav_graph_greeting"/>
+
+        <action
+            android:id="@+id/action_fragmentToGo_to_photos"
+            app:destination="@id/nav_graph_photos"/>
+    </fragment>
+
+    <include app:graph="@navigation/nav_graph_greeting" />
+    <include app:graph="@navigation/nav_graph_photos" />
 </navigation>

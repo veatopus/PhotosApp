@@ -2,4 +2,5 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <color name="semiTransparentBackground">#00000080</color>
+    <color name="semiTransparentGray">#88AAAAAA</color>
 </resources>

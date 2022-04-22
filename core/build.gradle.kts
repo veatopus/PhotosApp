@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    androidLibrary
+    kotlinAndroid
 }
 
 android {
@@ -28,7 +28,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = appConfig.jvmVersion
     }
     buildFeatures {
         viewBinding = true
@@ -36,12 +36,20 @@ android {
 }
 
 dependencies {
-
     implementation(deps.androidx.constraintLayout)
     implementation(deps.androidx.coreKtx)
     implementation(deps.androidx.appCompat)
     implementation(deps.androidx.material)
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+
+    //coroutines
+    addCoroutines()
+
+    //koin
+    addKoin()
+
+    //lifecycle
+    implementation(deps.lifecycle.runtimeKtx)
+
+    //for loading photos
+    implementation(deps.glide)
 }
