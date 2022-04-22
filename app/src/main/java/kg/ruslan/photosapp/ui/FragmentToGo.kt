@@ -17,12 +17,13 @@ class FragmentToGo : BaseFragment<FragmentToGoBinding>(FragmentToGoBinding::infl
     private val greetingFragmentOpened: GreetingFragmentOpened by inject()
 
     override fun initialize() {
-        if (!greetingFragmentOpened.haveGreetingFragmentOpened()) openHomeScreen()
+        if (greetingFragmentOpened.haveGreetingFragmentOpened()) openHomeScreen()
         else openGreetingScreen()
     }
 
     private fun openGreetingScreen() {
         findNavController().navigate(R.id.action_fragmentToGo_to_greeting)
+        greetingFragmentOpened.greetingFragmentOpened()
     }
 
     private fun openHomeScreen() {
