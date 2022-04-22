@@ -10,10 +10,3 @@ fun ImageView.load(url: String) {
         .load(url)
         .into(this)
 }
-
-fun ImageView.load(uri: Uri) {
-    Glide
-        .with(context)
-        .load(uri)
-        .into(this)
-}

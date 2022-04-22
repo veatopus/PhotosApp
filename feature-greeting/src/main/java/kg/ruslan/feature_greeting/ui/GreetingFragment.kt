@@ -62,10 +62,4 @@ class GreetingFragment : BaseFragment<FragmentGreetingBinding>(FragmentGreetingB
             }
         }
     }
-
-    private fun setListenerWithUIIntent(view: View, intent: GreetingUIIntents) {
-        view.setOnClickListener {
-            viewModel.handleSideEffects(intent)
-        }
-    }
 }

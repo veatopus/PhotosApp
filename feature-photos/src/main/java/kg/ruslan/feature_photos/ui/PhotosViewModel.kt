@@ -38,6 +38,7 @@ class PhotosViewModel(
 
     private suspend fun getPhotos() {
         getLocalPhotosUseCase().collect { resource ->
+            Thread.sleep(2000)
             when(resource) {
                 is Resource.Loading -> _state.update { it.copy(isLoading = true) }
                 is Resource.Error -> _state.update { it.copy(isLoading = false, errorMessage = resource.message) }

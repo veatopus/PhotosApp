@@ -80,7 +80,4 @@ open class BaseFragment<Binding : ViewBinding>(
         request.launch(permissions)
     }
 
-    companion object {
-        private const val REQUEST_PERMISSION = 786
-    }
 }

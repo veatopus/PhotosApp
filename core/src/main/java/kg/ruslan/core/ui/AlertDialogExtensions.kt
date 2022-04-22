@@ -15,18 +15,6 @@ annotation class AlertDialogExtensions
 
 /**
  *  Extension to create and display an [AlertDialog] and shows it.
- *  @param dialogBuilder is a Helper class to process dialog DSL and create
- *  a [AlertDialog.Builder] instance.
- *
- *  It uses safe way to show dialog which means dialog will only be shown if the activity is not finishing.
- * */
-fun Activity.alertDialog(dialogBuilder: AlertDialogBuilder.() -> Unit): AlertDialog =
-    AlertDialogBuilder().apply(dialogBuilder).createDialog(this).apply {
-        takeUnless { isFinishing }?.show()
-    }
-
-/**
- *  Extension to create and display an [AlertDialog] and shows it.
  *  @param dialogBuilder is a Helper class to process dialog DSL and
  *  create a [AlertDialog.Builder] instance.
  *
@@ -36,25 +24,6 @@ fun Fragment.alertDialog(dialogBuilder: AlertDialogBuilder.() -> Unit): AlertDia
     AlertDialogBuilder().apply(dialogBuilder).createDialog(requireContext()).apply {
         takeUnless { activity == null && requireActivity().isFinishing }?.show()
     }
-
-
-/**
- * Extension to create an [AlertDialog]
- * @param dialogBuilder is a Helper class to process dialog DSL and
- * create a [AlertDialog.Builder] instance.
- * @return [AlertDialog] object which can be used to show the dialog
- * */
-fun Activity.createDialog(dialogBuilder: AlertDialogBuilder.() -> Unit): AlertDialog =
-    AlertDialogBuilder().apply(dialogBuilder).createDialog(this)
-
-/**
- * Extension to create an [AlertDialog]
- * @param dialogBuilder is a Helper class to process dialog DSL and
- * create a [AlertDialog.Builder] instance.
- * @return [AlertDialog] object which can be used to show the dialog
- * */
-fun Fragment.createDialog(dialogBuilder: AlertDialogBuilder.() -> Unit): AlertDialog =
-    AlertDialogBuilder().apply(dialogBuilder).createDialog(this.requireContext())
 
 /**
  * [AlertDialog] Extension Helper class

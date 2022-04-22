@@ -2,7 +2,7 @@ package kg.ruslan.core.sharedpreference
 
 import android.content.SharedPreferences
 
-class GreetingFragmentOpened(private val prefs: SharedPreferences) {
+class GreetingFragmentOpened(prefs: SharedPreferences) {
 
     private var isScreenOpened by BooleanSPDelegate(prefs = prefs)
 

@@ -1,8 +1,6 @@
 package kg.ruslan.feature_photos.ui
 
 import android.Manifest
-import android.view.View
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kg.ruslan.core.base.BaseFragment
 import kg.ruslan.core.models.Photo
 import kg.ruslan.core.ui.dismissProgress

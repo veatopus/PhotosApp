@@ -12,9 +12,6 @@ object appConfig {
     const val compileSdkVersion = 32
     const val buildToolsVersion = "31.0.0"
 
-    const val gradleVersion = "4.4"
-
-
     const val applicationId = "kg.ruslan.photosapp"
 
     const val minSdkVersion = 21
@@ -29,7 +26,6 @@ object appConfig {
 
 object deps {
     object androidx {
-        const val activity = "androidx.activity:activity:1.4.0@aar"
         const val appCompat = "androidx.appcompat:appcompat:1.3.1"
         const val coreKtx = "androidx.core:core-ktx:1.7.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
@@ -42,7 +38,6 @@ object deps {
 
         const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
         const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-        const val commonJava8 = "androidx.lifecycle:lifecycle-common-java8:$version"
     }
 
     object coroutines {
@@ -69,12 +64,10 @@ object deps {
     }
 
     const val gson = "com.google.code.gson:gson:2.8.6"
-    const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
     const val flowExt = "io.github.hoc081098:FlowExt:0.1.0"
     const val glide = "com.github.bumptech.glide:glide:4.12.0"
     const val timber = "com.jakewharton.timber:timber:5.0.1"
-    const val stfalconImageViewer = "com.github.stfalcon-studio:StfalconImageViewer:v1.0.1"
 }
 
 private typealias PDsS = PluginDependenciesSpec
