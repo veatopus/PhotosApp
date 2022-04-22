@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature-greeting" />
+            <option value="$PROJECT_DIR$/feature-photos" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

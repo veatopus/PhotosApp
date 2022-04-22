@@ -5,6 +5,7 @@ import kg.ruslan.core.di.coreModule
 import kg.ruslan.data.local.di.dataModule
 import kg.ruslan.domain.domainModule
 import kg.ruslan.feature_greeting.di.featureGreetingModule
+import kg.ruslan.feature_photos.di.photosModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -28,7 +29,8 @@ class App: Application() {
                     domainModule,
                     dataModule,
                     coreModule,
-                    featureGreetingModule
+                    featureGreetingModule,
+                    photosModule
                 )
             )
         }

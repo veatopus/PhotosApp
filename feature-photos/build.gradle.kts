@@ -1,31 +1,21 @@
 plugins {
-    id("org.jetbrains.kotlin.android")
-    androidApplication
+    androidLibrary
     kotlinAndroid
 }
 
 android {
     compileSdk = appConfig.compileSdkVersion
-    buildToolsVersion = appConfig.buildToolsVersion
 
     defaultConfig {
-        applicationId = appConfig.applicationId
         minSdk = appConfig.minSdkVersion
         targetSdk = appConfig.targetSdkVersion
-        versionCode = appConfig.versionCode
-        versionName = appConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("debug") {
-            isMinifyEnabled = false
-            isDebuggable = true
-            applicationIdSuffix = ".debug"
-        }
-        getByName("release") {
-            isDebuggable = false
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -33,35 +23,45 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = appConfig.jvmVersion
+    }
 
-    kotlinOptions { jvmTarget = JavaVersion.VERSION_1_8.toString() }
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    // base
+    implementation(deps.androidx.coreKtx)
+    implementation(deps.androidx.appCompat)
+    implementation(deps.androidx.material)
+
+    //modules
+    implementation(core)
+    implementation(domain)
+
+    //coroutines
+    addCoroutines()
 
     //koin
     addKoin()
+
+    //recycler view
+    implementation(deps.androidx.recyclerView)
+
+    //viewModel
+    implementation(deps.lifecycle.viewModelKtx)
 
     //navigation
     implementation(deps.jetpackNavigation.uiNavigation)
     implementation(deps.jetpackNavigation.fragmentNavigation)
     implementation(deps.jetpackNavigation.moduleSupport)
-
-    //modules
-    implementation(core)
-    implementation(domain)
-    implementation(data)
-    implementation(featureGreeting)
-    implementation(featurePhotos)
 
     //logger
     implementation(deps.timber)
