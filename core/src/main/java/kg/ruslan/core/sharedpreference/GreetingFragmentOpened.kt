@@ -9,6 +9,6 @@ class GreetingFragmentOpened(prefs: SharedPreferences) {
     fun haveGreetingFragmentOpened() = isScreenOpened
 
     fun greetingFragmentOpened() {
-        isScreenOpened = false
+        isScreenOpened = true
     }
 }
