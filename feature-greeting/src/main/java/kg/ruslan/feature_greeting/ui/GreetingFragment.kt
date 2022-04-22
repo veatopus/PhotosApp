@@ -24,7 +24,6 @@ class GreetingFragment : BaseFragment<FragmentGreetingBinding>(FragmentGreetingB
     private val greetingFragmentOpened: GreetingFragmentOpened by inject()
 
     override fun initialize() {
-        greetingFragmentOpened.greetingFragmentOpened()
         viewModel.handleSideEffects(GreetingUIIntents.GetCandidate)
         initToolbar()
         bindState(state = viewModel.state)
@@ -49,6 +48,7 @@ class GreetingFragment : BaseFragment<FragmentGreetingBinding>(FragmentGreetingB
 
     private fun initData(data: Candidate?) {
         if (data != null) {
+            greetingFragmentOpened.greetingFragmentOpened()
             binding.run {
                 photoOfUser.load(data.photoLink)
                 content.run {

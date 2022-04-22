@@ -7,4 +7,9 @@
     <string name="userAvatar">User Avatar</string>
     <string name="at_company">* At company:</string>
     <string name="on_position">- On position:</string>
+    <string name="photo">photo</string>
+    <string name="negative_button_default_text">NO</string>
+    <string name="app_name">Photos App</string>
+    <string name="dialog_message_default">Here\'s some message</string>
+    <string name="positive_button_default_text">YES</string>
 </resources>

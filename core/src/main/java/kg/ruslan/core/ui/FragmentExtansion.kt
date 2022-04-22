@@ -23,3 +23,14 @@ fun Fragment.showToastLong(text: String) {
 fun Fragment.showToastLong(@StringRes textFromRes: Int) {
     Toast.makeText(context, textFromRes, Toast.LENGTH_LONG).show()
 }
+
+fun Fragment.showErrorAlert(rTitle: String = "Error", rMessage: String? = null, retryOnPositiveButton: (() -> Unit)? = null) {
+    alertDialog {
+        title = rTitle
+        if (rMessage != null)
+            message = rMessage
+        positiveButton {
+            retryOnPositiveButton?.invoke()
+        }
+    }
+}

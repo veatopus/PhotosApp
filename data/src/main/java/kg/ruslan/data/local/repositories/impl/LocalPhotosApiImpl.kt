@@ -1,47 +1,56 @@
 package kg.ruslan.data.local.repositories.impl
 
-import android.annotation.SuppressLint
-import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import androidx.lifecycle.LiveData
-import kg.ruslan.core.models.Photo
 import kg.ruslan.core.apis.repositories.LocalPhotosApi
 import kg.ruslan.core.base.BaseRepository
+import kg.ruslan.core.models.Photo
 import kg.ruslan.core.resource.Resource
-import kg.ruslan.data.errors.StoragePermissionsNotReceived
 import kotlinx.coroutines.flow.Flow
 
 class LocalPhotosApiImpl(
     private val context: Context
 ) : BaseRepository(), LocalPhotosApi {
 
-    @SuppressLint("Recycle")
     override fun getLocalPhotos(): Flow<Resource<List<Photo>>> = doRequest {
+        emit(Resource.Loading())
+        var counts = 0
         val data = mutableListOf<Photo>()
-        context.contentResolver.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            null,
-            null,
-            null,
-            null
-        )?.use { cursor ->
-            // Cache column indices.
-            val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
+        val projection = arrayOf(
+            MediaStore.Images.Media.DATA,
+            MediaStore.Images.Media._ID,
+            MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+            MediaStore.Images.Media.DATE_TAKEN
+        )
+        val images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val orderBy = MediaStore.Images.Media.DATE_TAKEN
+        val cur = context.contentResolver.query(
+            images, projection,
+            // Which
+            // columns
+            // to return
+            null,  // Which rows to return (all rows)
+            null,  // Selection arguments (none)
+            "$orderBy DESC" // Ordering
+        )
+        if (cur?.moveToNext() == true) {
+            val bucketColumn: Int = cur.getColumnIndex(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+            val dateColumn: Int = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN)
+            do {
+                val columnIndex = cur.getColumnIndex(MediaStore.Images.Media.DATA)
 
-            while (cursor.moveToNext()) {
-                val id = cursor.getLong(idColumn)
+                if (columnIndex >= 0) {
+                    data.add(0, Photo(Uri.parse(
+                        cur.getString(columnIndex)
+                    )))
+                    counts++
+                } else {
+                    emit(Resource.Error(message = "files not found"))
+                }
 
-                val contentUri: Uri = ContentUris.withAppendedId(
-                    MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                    id
-                )
-                data.add(Photo(uri = contentUri))
-            }
-            emit(Resource.Success(data = data))
+            } while (cur.moveToNext() && counts <= 100)
         }
-
-
+        emit(Resource.Success(data = data))
     }
 }

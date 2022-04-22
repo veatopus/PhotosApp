@@ -26,7 +26,7 @@ class FragmentToGo : BaseFragment<FragmentToGoBinding>(FragmentToGoBinding::infl
     }
 
     private fun openHomeScreen() {
-        //TO/DO("Not yet implemented")
+        findNavController().navigate(R.id.action_fragmentToGo_to_photos)
     }
 
 }

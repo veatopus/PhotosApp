@@ -95,6 +95,7 @@ inline val DependencyHandler.core get() = project(":core")
 inline val DependencyHandler.domain get() = project(":domain")
 inline val DependencyHandler.data get() = project(":data")
 inline val DependencyHandler.featureGreeting get() = project(":feature-greeting")
+inline val DependencyHandler.featurePhotos get() = project(":feature-photos")
 
 //extansions
 fun DependencyHandler.addKoin(wihtinTest: Boolean = false) {
